@@ -5,10 +5,10 @@ using namespace std;
 
 int main()
 {
-	char ccNumToVerify[] = {5, 2, 9, 0,
-				9, 9, 0, 0,
-				1, 5, 9, 2,
-				1, 3, 8, 0};
+	char ccNumToVerify[] = {4, 1, 4, 2,
+				3, 8, 3, 3,
+				3, 5, 3, 2,
+				5, 1, 8, 0};
 
 	bool isLuhnValid;
 
