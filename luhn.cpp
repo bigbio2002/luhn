@@ -2,12 +2,20 @@
 
 using namespace std;
 
-bool luhnCheckValid(char cardNumber[16])
+#define LUHN_NUMBER_LENGTH 16
+
+int luhnCheckValid(char cardNumber[LUHN_NUMBER_LENGTH], bool hasLuhnDigit=true)
 {
 	int sum = 0;
-	bool parity = 16 % 2;
+	bool parity;
+	int calculatedLuhnDigit;
 
-	for(int i=0; i < 16-1; ++i)
+	if(hasLuhnDigit)
+		{ parity = LUHN_NUMBER_LENGTH % 2; }
+	else
+		{ parity = LUHN_NUMBER_LENGTH-1 % 2; }
+
+	for(int i=0; i < LUHN_NUMBER_LENGTH-1; ++i)
 	{
 		if((i % 2) != parity)
 		{
@@ -25,6 +33,11 @@ bool luhnCheckValid(char cardNumber[16])
 	}
 	//cout << "DEBUG: sum = " << sum << endl;
 
-	return (cardNumber[16-1] == (10 - (sum % 10)) % 10);
-	//return (cardNumber[16-1] == (9 - ((sum + 9) % 10)));
+	calculatedLuhnDigit = (10 - (sum % 10)) % 10);
+	if( !hasLuhnDigit || cardNumber[LUHN_NUMBER_LENGTH-1] == calculatedLuhnDigit )
+		{ return calculatedLuhnDigit; }
+		//return (cardNumber[LUHN_NUMBER_LENGTH-1] == (9 - ((sum + 9) % 10)));
+	else
+		{ return -1; }	//Luhn check FAILED
+
 }
