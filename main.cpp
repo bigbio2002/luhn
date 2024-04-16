@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include "luhn.h"
 
 using namespace std;
@@ -8,7 +9,7 @@ int main()
 	char ccNumToVerify[] = {4, 1, 4, 2,
 				3, 8, 3, 3,
 				3, 5, 3, 2,
-				5, 1, 8, 999};
+				5, 1, 8, 9};
 
 	bool isLuhnValid;
 	int luhnDigit;
@@ -20,7 +21,7 @@ int main()
 	else if(luhnDigit < 0)
 		cout << "This number appears to be invalid." << endl;
 	else
-		abort(1);
+		abort();
 
 	return 0;
 }

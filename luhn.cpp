@@ -33,7 +33,7 @@ int luhnCheckValid(char cardNumber[LUHN_NUMBER_LENGTH], bool hasLuhnDigit=true)
 	}
 	//cout << "DEBUG: sum = " << sum << endl;
 
-	calculatedLuhnDigit = (10 - (sum % 10)) % 10);
+	calculatedLuhnDigit = (10 - (sum % 10)) % 10;
 	if( !hasLuhnDigit || cardNumber[LUHN_NUMBER_LENGTH-1] == calculatedLuhnDigit )
 		{ return calculatedLuhnDigit; }
 		//return (cardNumber[LUHN_NUMBER_LENGTH-1] == (9 - ((sum + 9) % 10)));
