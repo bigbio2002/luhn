@@ -9,3 +9,5 @@ luhncheck:
 
 clean:
 	rm -f luhncheck
+
+.PHONY: default clean

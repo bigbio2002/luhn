@@ -4,8 +4,10 @@
 
 using namespace std;
 
-int main()
+int main(void)
 {
+	// Note: we are working with the numerical integer value
+	// of the chars, NOT the ASCII character representations
 	char ccNumToVerify[] = {4, 1, 4, 2,
 				3, 8, 3, 3,
 				3, 5, 3, 2,
