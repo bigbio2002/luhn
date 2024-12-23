@@ -23,7 +23,7 @@ int main(void)
 		exit(EXIT_FAILURE);
 
 	//verify input
-	for(int i=0;i<totalCharsInput-1;i++)
+	for(std::iter i=charsInput.begin();i<totalCharsInput-1;i++)
 	{
 		
 	}
