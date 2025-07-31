@@ -39,7 +39,7 @@ int main(void)
 	else if(luhnDigit < 0)
 		cout << "This number appears to be invalid." << endl;
 	else
-		abort();
+		exit(1);
 
 	return 0;
 }
