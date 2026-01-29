@@ -1,23 +1,25 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
 #define LUHN_NUMBER_LENGTH 16
 
-int luhnCheckValid(char cardNumber[LUHN_NUMBER_LENGTH], bool hasLuhnDigit=true)
+int luhnCheckValid(int cardNumber[LUHN_NUMBER_LENGTH], bool hasLuhnDigit=true)
 {
 	int sum = 0;
 	bool parity;
 	int calculatedLuhnDigit;
 
+	int lengthWithoutLD = LUHN_NUMBER_LENGTH;
 	if(hasLuhnDigit)
-		{ parity = LUHN_NUMBER_LENGTH % 2; }
-	else
-		{ parity = LUHN_NUMBER_LENGTH-1 % 2; }
+		{ lengthWithoutLD -= 1; }
 
-	for(int i=0; i < LUHN_NUMBER_LENGTH-1; ++i)
+	parity = lengthWithoutLD % 2;
+
+	for(int i=0; i < lengthWithoutLD; ++i)
 	{
-		if((i % 2) != parity)
+		if((i % 2) == parity)
 		{
 			sum += cardNumber[i];
 		}
@@ -27,14 +29,14 @@ int luhnCheckValid(char cardNumber[LUHN_NUMBER_LENGTH], bool hasLuhnDigit=true)
 		}
 		else
 		{
-			sum += (2 * cardNumber[i]);
+			sum += 2 * cardNumber[i];
 		}
 		//cout << "DEBUG: index " << i+1 << ", digit: " << cardNumber[i] << ", running total: " << sum << endl;
 	}
 	//cout << "DEBUG: sum = " << sum << endl;
 
 	calculatedLuhnDigit = (10 - (sum % 10)) % 10;
-	if( !hasLuhnDigit || cardNumber[LUHN_NUMBER_LENGTH-1] == calculatedLuhnDigit )
+	if( !hasLuhnDigit || cardNumber[lengthWithoutLD] == calculatedLuhnDigit )
 		{ return calculatedLuhnDigit; }
 		//return (cardNumber[LUHN_NUMBER_LENGTH-1] == (9 - ((sum + 9) % 10)));
 	else

@@ -12,34 +12,26 @@ int main(void)
 
 	// Note: we are working with the numerical integer value
 	// of the chars, NOT the ASCII character representations
-	/* char ccNumToVerify[] = {4, 1, 4, 2,
-				3, 8, 3, 3,
-				3, 5, 3, 2,
-				5, 1, 8, 9}; */
-
-	cout << "Enter number to test WITHOUT Luhn digit: ";
-	totalCharsInput = getline(charsInput, bufferLength, cin);
-	if(totalCharsInput == -1)
-		exit(EXIT_FAILURE);
-
-	//verify input
-	for(std::iter i=charsInput.begin();i<totalCharsInput-1;i++)
-	{
-		
-	}
-
+	// 4432522610104948
+	int ccNumToVerify[16] = {4, 4, 3, 2,
+				5, 2, 2, 6,
+				1, 0, 1, 0,
+				4, 9, 4, 8};
 
 	bool isLuhnValid;
 	int luhnDigit;
 
-	luhnDigit = luhnCheckValid(ccNumToVerify, false);
+	luhnDigit = luhnCheckValid(ccNumToVerify);
 
 	if(luhnDigit > 0 && luhnDigit < 10)
 		cout << "This number passes the Luhn test." << endl;
 	else if(luhnDigit < 0)
 		cout << "This number appears to be invalid." << endl;
 	else
+	{
+		cerr << "something weird happened..." << endl;
 		exit(1);
+	}
 
 	return 0;
 }

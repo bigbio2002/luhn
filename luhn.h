@@ -11,6 +11,6 @@
    if second parameter is true, return the Luhn digit if it is correct, otherwise
    return a negative number to indicate a failed check */
 
-int luhnCheckValid(char[], bool);
+int luhnCheckValid(int[], bool=true);
 
 #endif
