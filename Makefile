@@ -1,13 +1,13 @@
 CXX ?= g++
-CXXFLAGS ?= -O2 -g
+CXXFLAGS ?= -O1 -g -Wall -Wextra
 
 
 default: luhncheck
 
-luhncheck:
-	$(CXX) $(CXXFLAGS) -o luhncheck main.cpp luhn.cpp
+luhncheck: main.o luhn.o
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:
-	rm -f luhncheck
+	rm -f luhncheck *.o
 
 .PHONY: default clean
